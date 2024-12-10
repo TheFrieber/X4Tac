@@ -84,10 +84,12 @@ Dieses Projekt wurde als Teil einer Bewerbungsaufgabe entwickelt.
 ## Preview
 
 **Windows**:
+
 ![WindowsX4Tac](https://github.com/user-attachments/assets/3355aca6-1248-44c5-88e6-33974827087c)
 
 
 **Android(-Emulator)**:
+
 ![AndroidX4Tac](https://github.com/user-attachments/assets/f426b103-d831-4a7a-bf57-2821fd4b2718)
 
 
