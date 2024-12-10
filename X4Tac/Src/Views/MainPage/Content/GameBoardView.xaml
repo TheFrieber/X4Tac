@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X4Tac.Src.Views.MainPage.Content.GameBoardView">
+
+    <Grid>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto"
+          ColumnDefinitions="Auto,Auto,Auto,Auto"
+          Padding="10" HorizontalOptions="CenterAndExpand" ColumnSpacing="5" RowSpacing="5">
+
+
+            <!-- Erstelle dynamisch Buttons für das 4x4 Spielfeld -->
+            <!-- Erste Zeile -->
+            <Button Grid.Row="0" Grid.Column="0" x:Name="Cell00" Command="{Binding OnCellClicked}" CommandParameter="0,0" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="0" Grid.Column="1" x:Name="Cell01" Command="{Binding OnCellClicked}" CommandParameter="0,1" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="0" Grid.Column="2" x:Name="Cell02" Command="{Binding OnCellClicked}" CommandParameter="0,2" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="0" Grid.Column="3" x:Name="Cell03" Command="{Binding OnCellClicked}" CommandParameter="0,3" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+
+            <!-- Zweite Zeile -->
+            <Button Grid.Row="1" Grid.Column="0" x:Name="Cell10" Command="{Binding OnCellClicked}" CommandParameter="1,0" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="1" Grid.Column="1" x:Name="Cell11" Command="{Binding OnCellClicked}" CommandParameter="1,1" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="1" Grid.Column="2" x:Name="Cell12" Command="{Binding OnCellClicked}" CommandParameter="1,2" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="1" Grid.Column="3" x:Name="Cell13" Command="{Binding OnCellClicked}" CommandParameter="1,3" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+
+            <!-- Dritte Zeile -->
+            <Button Grid.Row="2" Grid.Column="0" x:Name="Cell20" Command="{Binding OnCellClicked}" CommandParameter="2,0" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="2" Grid.Column="1" x:Name="Cell21" Command="{Binding OnCellClicked}" CommandParameter="2,1" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="2" Grid.Column="2" x:Name="Cell22" Command="{Binding OnCellClicked}" CommandParameter="2,2" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="2" Grid.Column="3" x:Name="Cell23" Command="{Binding OnCellClicked}" CommandParameter="2,3" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+
+            <!-- Vierte Zeile -->
+            <Button Grid.Row="3" Grid.Column="0" x:Name="Cell30" Command="{Binding OnCellClicked}" CommandParameter="3,0" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="3" Grid.Column="1" x:Name="Cell31" Command="{Binding OnCellClicked}" CommandParameter="3,1" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="3" Grid.Column="2" x:Name="Cell32" Command="{Binding OnCellClicked}" CommandParameter="3,2" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+            <Button Grid.Row="3" Grid.Column="3" x:Name="Cell33" Command="{Binding OnCellClicked}" CommandParameter="3,3" BackgroundColor="{DynamicResource ButtonBackground}" BorderColor="{DynamicResource TextSecondary}" BorderWidth="1"/>
+
+        </Grid>
+
+        <!-- Overlay für die KI-Berechnung -->
+        <Grid x:Name="GameOverlayAIIndicator" BackgroundColor="#80000000" IsVisible="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+                <ActivityIndicator IsRunning="True" Color="{DynamicResource TextPrimary}" />
+                <Label Text="Die KI berechnet den nächsten Zug..."
+                       TextColor="{DynamicResource TextPrimary}"
+                       FontSize="Medium"
+                       HorizontalOptions="Center" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+
+</ContentView>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X4Tac.Src.Views.MainPage.Content.NewGameView"
+             BackgroundColor="{DynamicResource BackgroundDark}">
+    
+    <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+        <!-- Title with Greeting -->
+        <Label 
+            Text="Willkommen zu X4Tac!" 
+            FontSize="30" 
+            FontAttributes="Bold" 
+            TextColor="White"
+            HorizontalOptions="Center" />
+
+        <!-- Subtitle with instructions -->
+        <Label 
+            Text="Bitte Spiel-Modi auswählen" 
+            FontSize="20" 
+            TextColor="{DynamicResource TextPrimary}"
+            HorizontalOptions="Center" />
+
+        <!-- Button to Play Against Another Player -->
+        <Button 
+            Text="Gegen Spieler spielen"
+            BackgroundColor="{DynamicResource AccentColor}"
+            TextColor="{DynamicResource TextPrimary}"
+            Command="{Binding OnPlayAgainstPlayerClicked}"
+            HorizontalOptions="Center" 
+            VerticalOptions="Center" />
+
+        <!-- Button to Play Against AI -->
+        <Button 
+            Text="Gegen KI spielen"
+            BackgroundColor="{DynamicResource AccentColor}"
+            TextColor="{DynamicResource TextPrimary}"
+            Command="{Binding OnPlayAgainstAIClicked}"
+            HorizontalOptions="Center" 
+            VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentView>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:X4Tac.Src.Views.MainPage.Content"
+             x:Class="X4Tac.MainPage"
+             BackgroundColor="{DynamicResource BackgroundDark}">
+
+    <Grid>
+        <!-- Define Rows and Columns for the Main Grid -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Top Bar -->
+            <RowDefinition Height="*" />
+            <!-- Content Area (Spielfeld) -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <!-- Left Panel -->
+            <ColumnDefinition Width="*" />
+            <!-- Content Area (Spielfeld) -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Content Area: 4x4 Grid for the Game -->
+        <ContentView x:Name="ViewContainer" Grid.Row="1" Grid.Column="1" Padding="10" Content="{Binding CurrentContentView}">
+        </ContentView>
+
+        <!-- Hamburger Menu Button in Top Bar -->
+        <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Padding="10" Orientation="Horizontal" BackgroundColor="{DynamicResource BackgroundLight}" VerticalOptions="Center">
+            <!-- Hamburger Button -->
+            <Button x:Name="HamburgerButton" Text="☰" Clicked="OnHamburgerClicked" BackgroundColor="{DynamicResource AccentColor}" TextColor="White" WidthRequest="50"/>
+            <Label x:Name="CurrentPlayerLabel" Text="{Binding Title}" TextColor="White" HorizontalOptions="CenterAndExpand" FontSize="Large" />
+        </StackLayout>
+
+        <!-- Left Panel: Configuration Buttons -->
+        <StackLayout x:Name="SidePanel" Grid.Row="1" Grid.Column="0" BackgroundColor="LightGray" Padding="10" Spacing="10" Background="{DynamicResource BackgroundLight}" IsVisible="False">
+            <Button Text="Neues Spiel" 
+                    Command="{Binding OnNewGameClicked}" 
+                    BackgroundColor="{DynamicResource AccentColor}" 
+                    TextColor="{DynamicResource TextPrimary}"/>
+            <Button Text="Spielstand Laden" 
+                    Command="{Binding OnLoadGameClicked}" 
+                    BackgroundColor="{DynamicResource AccentColor}"
+                    TextColor="{DynamicResource TextPrimary}"/>
+            <Button Text="Spielstand Speichern" 
+                    Command="{Binding OnSaveGameClicked}" 
+                    BackgroundColor="{DynamicResource AccentColor}"
+                    TextColor="{DynamicResource TextPrimary}"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
