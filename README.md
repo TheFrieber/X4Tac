@@ -88,7 +88,8 @@ Dieses Projekt wurde als Teil einer Bewerbungsaufgabe entwickelt.
 
 
 **Android(-Emulator)**:
-![WindowsX4Tac](https://github.com/user-attachments/assets/5a26aef2-f8ce-42cd-ae76-bfb730bd7f0b)
+![AndroidX4Tac](https://github.com/user-attachments/assets/f426b103-d831-4a7a-bf57-2821fd4b2718)
+
 
 
 
