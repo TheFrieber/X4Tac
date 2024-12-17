@@ -514,9 +514,6 @@ namespace X4Tac.Src.Services.Implementations.Interaction
 
         private int EvaluateBoard()
         {
-            // Bewertet das aktuelle Spielfeld
-            // Beispiel: +10 für jede fast vollständige Zeile/Spalte/Diagonale des Maximizing-Players,
-            // -10 für jede des Minimizing-Players.
             int score = 0;
 
             // Für Reihen:
@@ -524,14 +521,71 @@ namespace X4Tac.Src.Services.Implementations.Interaction
             {
                 int maximizingCount = 0;
                 int minimizingCount = 0;
+
                 for (int col = 0; col < BoardSize; col++)
                 {
                     if (Board[row, col] == "O") maximizingCount++;
                     if (Board[row, col] == "X") minimizingCount++;
                 }
-                if (maximizingCount > 0 && minimizingCount == 0) score += maximizingCount;
-                if (minimizingCount > 0 && maximizingCount == 0) score -= minimizingCount;
+
+                // Bewertung für den Maximizing-Player ("O")
+                if (maximizingCount == 3 && minimizingCount == 0) score -= 100; // Gefahr, zu verlieren
+                else if (maximizingCount > 0 && minimizingCount == 0) score -= maximizingCount; // Allgemeine Gefahr
+
+                // Bewertung für den Minimizing-Player ("X")
+                if (minimizingCount == 3 && maximizingCount == 0) score += 100; // Gegner droht zu verlieren
+                else if (minimizingCount > 0 && maximizingCount == 0) score += minimizingCount; // Gegnerische Gefahr
             }
+
+            // Für Spalten:
+            for (int col = 0; col < BoardSize; col++)
+            {
+                int maximizingCount = 0;
+                int minimizingCount = 0;
+
+                for (int row = 0; row < BoardSize; row++)
+                {
+                    if (Board[row, col] == "O") maximizingCount++;
+                    if (Board[row, col] == "X") minimizingCount++;
+                }
+
+                // Bewertung für den Maximizing-Player ("O")
+                if (maximizingCount == 3 && minimizingCount == 0) score -= 100; // Gefahr, zu verlieren
+                else if (maximizingCount > 0 && minimizingCount == 0) score -= maximizingCount;
+
+                // Bewertung für den Minimizing-Player ("X")
+                if (minimizingCount == 3 && maximizingCount == 0) score += 100; // Gegner droht zu verlieren
+                else if (minimizingCount > 0 && maximizingCount == 0) score += minimizingCount;
+            }
+
+            // Für Diagonalen:
+            int diag1Maximizing = 0, diag1Minimizing = 0;
+            int diag2Maximizing = 0, diag2Minimizing = 0;
+
+            for (int i = 0; i < BoardSize; i++)
+            {
+                // Hauptdiagonale
+                if (Board[i, i] == "O") diag1Maximizing++;
+                if (Board[i, i] == "X") diag1Minimizing++;
+
+                // Gegendiagonale
+                if (Board[i, BoardSize - i - 1] == "O") diag2Maximizing++;
+                if (Board[i, BoardSize - i - 1] == "X") diag2Minimizing++;
+            }
+
+            // Hauptdiagonale bewerten
+            if (diag1Maximizing == 3 && diag1Minimizing == 0) score -= 100;
+            else if (diag1Maximizing > 0 && diag1Minimizing == 0) score -= diag1Maximizing;
+
+            if (diag1Minimizing == 3 && diag1Maximizing == 0) score += 100;
+            else if (diag1Minimizing > 0 && diag1Maximizing == 0) score += diag1Minimizing;
+
+            // Gegendiagonale bewerten
+            if (diag2Maximizing == 3 && diag2Minimizing == 0) score -= 100;
+            else if (diag2Maximizing > 0 && diag2Minimizing == 0) score -= diag2Maximizing;
+
+            if (diag2Minimizing == 3 && diag2Maximizing == 0) score += 100;
+            else if (diag2Minimizing > 0 && diag2Maximizing == 0) score += diag2Minimizing;
 
             return score;
         }
